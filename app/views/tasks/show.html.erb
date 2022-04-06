@@ -1,0 +1,10 @@
+<h1><%= @Task.title %></h1>
+
+<% if @tasks.blank? %>
+<p>There are no tasks currently</p>
+
+<p>
+   <strong>Title: </strong> $<%= @task.title %><br />
+   <strong>Due Date: </strong> <%= @task.due_date%><br />
+   <strong>Type:</strong> <%= @task.type%><br />
+</p>

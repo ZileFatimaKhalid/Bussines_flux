@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
    
 	has_many :team_members
+	has_many :tasks
 	has_many :bussinesses, through: :team_members
 
 
