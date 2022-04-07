@@ -21,10 +21,13 @@
 		      <td><%= b.title %></td>
 		      <td><%= b.description %></td>
 		      <td><%= link_to 'Show', bussiness %></td>
-              <td><%= link_to 'Edit', edit_blog_path(b) %></td>
+              <td><%= link_to 'Edit', edit_bussiness_path(b) %></td>
 		    </tr>
 	  	<% end %>
 	  </tbody>
 	</table>
+    
+    <br>
 
-<
+<%= link_to 'New Bussiness', new_bussiness_path %>
+

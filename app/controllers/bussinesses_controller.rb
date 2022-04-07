@@ -1,11 +1,11 @@
 class BussinessesController < ApplicationController
+	before_action :set_bussiness, only: %i[ show edit update destroy ]
 	
 	def index
 		@bussinesses = Bussiness.all
 	end
 
 	def show
-		@bussinesses = Bussiness.find(params[:id])
 	end
 
 	def new
@@ -28,11 +28,9 @@ class BussinessesController < ApplicationController
     end
 
 	def edit
-		@bussinesses = Bussiness.find(params[:id])
     end
 
 	def update
-		@bussinesses = Bussiness.find(params[:id])
 
 		if @bussiness.update(bussiness_params)
 			redirect_to :action => 'show', :id => @bussiness
@@ -44,7 +42,12 @@ class BussinessesController < ApplicationController
 
    def destroy
    	@bussiness.destroy
-   redirect_to :action => 'list'
+   redirect_to :action => 'index'
  end
+    private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_bussiness
+      @blog = Bussiness.find(params[:id])
+    end
 
 end
