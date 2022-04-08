@@ -1,12 +1,13 @@
 <h1><%= @bussiness.title %></h1>
 
 <p>
-   <strong>Title: </strong> $<%= @bussiness.title %><br />
+   <strong>Title: </strong> <%= @bussiness.title %><br />
    <strong>Description: </strong> <%= @bussiness.description%><br />
    <strong>Created Date:</strong> <%= @bussiness.created_at %><br />
-   <strong>Bussiness ID</strong> <%= @bussiness.b_id %><br />
+   <strong>Bussiness ID:</strong> <%= @bussiness.id %><br />
 </p>
 
 
 <%= link_to 'Back', {:action => 'index'} %>
 <%= link_to 'Edit', {:action => 'edit'} %>
+<%= link_to 'AddUser', {:action => 'add_users'} %>

@@ -5,6 +5,8 @@
 
 <p>
    <strong>Title: </strong> $<%= @task.title %><br />
+   <strong>Type:</strong> <%= @task.task_type%><br />
    <strong>Due Date: </strong> <%= @task.due_date%><br />
-   <strong>Type:</strong> <%= @task.type%><br />
 </p>
+
+<%= link_to 'Back', {:action => 'index'} %>

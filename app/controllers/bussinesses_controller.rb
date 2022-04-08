@@ -9,25 +9,36 @@ class BussinessesController < ApplicationController
 	end
 
 	def new
-		@bussinesses = Bussiness.new
+		
+		@bussiness = Bussiness.new
 	end
 
+	def add_users
+
+		# if (current_user.id :user_id)
+		@TeamMember= TeamMember.new
+	end
+
+
+	#def createmember
+	#	@TeamMember = TeamMember.new(members_params)
+
+        #if @TeamMember.save
+        	#TeamMember.create(user_id: .id, bussiness_id: .id)
+
 	def create
-		@bussinesses = Bussiness.new(bussiness_params)
+		
+		@bussiness = Bussiness.new(bussiness_params)
 
 		if @bussiness.save
+			TeamMember.create(user_id: current_user.id, bussiness_id: @bussiness.id)
 			redirect_to :action => 'index'
 		else
 			render :action => 'new'
        end
      end
 
-
-    def bussiness_params
-    	params.require(:bussinesses).permit(:title, :b_id, :description)
-    end
-
-	def edit
+    def edit
     end
 
 	def update
@@ -42,12 +53,22 @@ class BussinessesController < ApplicationController
 
    def destroy
    	@bussiness.destroy
-   redirect_to :action => 'index'
- end
+    redirect_to :action => 'index'
+
+   end
+   
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_bussiness
-      @blog = Bussiness.find(params[:id])
+      @bussiness = Bussiness.find(params[:id])
+    end  
+    
+    def bussiness_params
+    	params.require(:bussiness).permit(:title, :description)
     end
 
-end
+    def members_params
+    	debugger
+    	params.require(:team_member).permit(:user_id, :bussiness_id)
+    end
+  end 
