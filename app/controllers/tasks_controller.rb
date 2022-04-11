@@ -5,7 +5,7 @@ def index
 	end
 
 	def show
-		@task = task.find(params[:id])
+		@task = Task.find(params[:id])
 	end
 
 	def new
@@ -28,7 +28,7 @@ def index
  end
 
  def task_params
-   params.require(:task).permit(:title, :task_type, :assignee)
+   params.require(:task).permit(:title, :task_type, :assignee_id)
  end
 end
 

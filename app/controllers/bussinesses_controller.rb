@@ -13,30 +13,39 @@ class BussinessesController < ApplicationController
 		@bussiness = Bussiness.new
 	end
 
-	def add_users
 
-		# if (current_user.id :user_id)
-		@TeamMember= TeamMember.new
+    def add_users
+		
+		@TeamMember= TeamMember.new(bussiness_id: params["bussiness_id"])
 	end
-
-
-	#def createmember
-	#	@TeamMember = TeamMember.new(members_params)
-
-        #if @TeamMember.save
-        	#TeamMember.create(user_id: .id, bussiness_id: .id)
-
+	
 	def create
 		
 		@bussiness = Bussiness.new(bussiness_params)
 
 		if @bussiness.save
-			TeamMember.create(user_id: current_user.id, bussiness_id: @bussiness.id)
+			#TeamMember.create(user_id: current_user.id, bussiness_id: @bussiness.id)
 			redirect_to :action => 'index'
 		else
 			render :action => 'new'
        end
      end
+
+    
+	def createmember
+	#debugger
+
+	#@TeamMember = TeamMember.new()
+	 
+	 @TeamMember = TeamMember.new(params[:user_id])
+
+        if @TeamMember.save
+        	TeamMember.create(user_id: params["user_id"], bussiness_id: @bussiness.id)
+            redirect_to :action => 'index'
+        else 
+            render :action => 'new'	
+        end
+     end 
 
     def edit
     end
@@ -67,8 +76,5 @@ class BussinessesController < ApplicationController
     	params.require(:bussiness).permit(:title, :description)
     end
 
-    def members_params
-    	debugger
-    	params.require(:team_member).permit(:user_id, :bussiness_id)
-    end
+    
   end 

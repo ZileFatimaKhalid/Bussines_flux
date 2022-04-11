@@ -1,0 +1,27 @@
+<h1><%= Team Members %></h1>
+
+<% if @team_members.blank? %>
+<p>There are no members currently</p>
+
+<table>
+	  <thead>
+	    <tr>
+	      <th>Bussiness ID</th>
+	      <th>User ID</th>
+	     
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	  	<% @team_members.each do |m| %>
+	  		<tr>
+		      <td><%= m.bussiness_id %></td>
+		      <td><%= m.user_id %></td>
+		    </tr>
+	  	<% end %>
+	  </tbody>
+	</table>
+    
+    <br>
+<%= link_to 'Back', {:action => 'index'} %>

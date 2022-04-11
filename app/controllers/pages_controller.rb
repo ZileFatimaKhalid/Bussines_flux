@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   
   def home
-  #	@posts = Bussiness.all
+  @posts = Bussiness.all
+  @tk = Task.all
   end
 end
