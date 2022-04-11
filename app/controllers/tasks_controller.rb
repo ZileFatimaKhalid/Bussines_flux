@@ -22,13 +22,8 @@ def index
        end
      end
 
-   def destroy
-   	@task.destroy
-   redirect_to :action => 'index'
- end
-
  def task_params
-   params.require(:task).permit(:title, :task_type, :assignee_id)
+   params.require(:task).permit(:title, :task_type, :due_date, :assignee_id)
  end
 end
 

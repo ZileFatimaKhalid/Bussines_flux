@@ -3,6 +3,8 @@
 <% if @tasks.blank? %>
 <p>There are no tasks currently</p>
 
+<% end %>
+
 <p>
    <strong>Title: </strong> $<%= @task.title %><br />
    <strong>Type:</strong> <%= @task.task_type%><br />
@@ -10,5 +12,4 @@
 </p>
 
 <%= link_to 'Back', {:action => 'index'} %>
-
-
+<%= link_to @task.bussiness.title, bussiness_path(@task.bussiness_id) %>

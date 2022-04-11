@@ -37,10 +37,9 @@ class BussinessesController < ApplicationController
 
 	#@TeamMember = TeamMember.new()
 	 
-	 @TeamMember = TeamMember.new(params[:user_id])
+	 @TeamMember = TeamMember.new(user_id: params["user_id"], bussiness_id: params["bussiness_id"])
 
         if @TeamMember.save
-        	TeamMember.create(user_id: params["user_id"], bussiness_id: @bussiness.id)
             redirect_to :action => 'index'
         else 
             render :action => 'new'	

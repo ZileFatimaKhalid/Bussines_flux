@@ -44,7 +44,7 @@
 		      <td><%= t.title %></td>
 		      <td><%= t.task_type %></td>
 		      <td><%= t.due_date %></td>
-		      <td><%= t.assignee_id %></td>
+		      <td><%= t.user.email %></td>
 		      <td><%= link_to 'Show', t %></td>
 		    </tr>
 	  	<% end %>
@@ -54,4 +54,4 @@
     <br>
 <%= link_to 'New Bussiness', new_bussiness_path %>&nbsp;&nbsp;
 <%= link_to 'New Tasks', new_task_path %>
-    
+

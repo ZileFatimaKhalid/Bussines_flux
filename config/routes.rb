@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   #end
   	
   resources :tasks
-   resources :team_members
+   #resources :team_members
 
   root to: "pages#home"
 

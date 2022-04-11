@@ -11,7 +11,7 @@
 	    <tr>
 	      <th>Title</th>
 	      <th>Task Type</th>
-	      <th> Assignee </th>
+	      <th> Assignee ID</th>
 	      <th colspan="3"></th>
 	    </tr>
 	  </thead>
@@ -22,7 +22,8 @@
 		      <td><%= t.title %></td>
 		      <td><%= t.task_type %></td>
 		      <td><%= t.due_date %></td>
-		      <td><%= t.assignee_id%></td>
+		      <td><%= t.user.email%></td>
+
 		      <td><%= link_to 'Show', t %></td>
 		    </tr>
 	  	<% end %>
