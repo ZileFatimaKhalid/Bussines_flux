@@ -1,11 +1,19 @@
 class BussinessesController < ApplicationController
+	before_action :authenticate_user!, :except => [:show, :index]
 	before_action :set_bussiness, only: %i[ show edit update destroy ]
 	
 	def index
 		@bussinesses = Bussiness.all
-	end
+		#if current_user.user_type == "writter"
+		#@bussiness = Bussiness.find.where(User.user_type == "writter")
+		#ussiness = Bussiness.all.where(User.user_type == "writter")
+		
+   end
 
-	def show
+	def show 
+		unless current_user.user_type == "admin"
+			redirect_to pages_about_path, :alert => "access denied"	
+	 end
 	end
 
 	def new
@@ -18,6 +26,13 @@ class BussinessesController < ApplicationController
 		
 		@TeamMember= TeamMember.new(bussiness_id: params["bussiness_id"])
 	end
+
+
+	def add_new_tasks
+		
+		@Task= Task.new(bussiness_id: params["bussiness_id"])
+	end
+
 	
 	def create
 		
@@ -74,6 +89,4 @@ class BussinessesController < ApplicationController
     def bussiness_params
     	params.require(:bussiness).permit(:title, :description)
     end
-
-    
-  end 
+end 

@@ -1,0 +1,27 @@
+<h1> Add Task in Business </h1>
+
+
+<%= form_with do |b| %>
+<div class="field">
+    <%= b.label :title %>
+    <%= b.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= b.label :task_type %>
+    <%= b.text_field :task_type %>
+  </div>
+
+
+  	<div class="field">
+  <%= b.label :user_id%><br />
+  <%= b.collection_select :user_id, TeamMember.where("bussiness_id = ?", params[:bussiness_id]), :id, :user_id, include_blank: true %>
+ </div>
+
+  <div class="actions">
+    <%= b.submit %>
+</div>
+
+<% end %>
+
+<%= link_to 'Back', {:action => 'index'} %>

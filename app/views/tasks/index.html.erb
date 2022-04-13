@@ -11,7 +11,9 @@
 	    <tr>
 	      <th>Title</th>
 	      <th>Task Type</th>
+	      <th>Due Date</th>
 	      <th> Assignee ID</th>
+	      <th> Business</th>
 	      <th colspan="3"></th>
 	    </tr>
 	  </thead>
@@ -23,8 +25,14 @@
 		      <td><%= t.task_type %></td>
 		      <td><%= t.due_date %></td>
 		      <td><%= t.user.email%></td>
+		     
+
+
 
 		      <td><%= link_to 'Show', t %></td>
+              <td><%= link_to 'Edit', edit_task_path(t) %></td>
+		    </tr>
+
 		    </tr>
 	  	<% end %>
 	  </tbody>
@@ -34,4 +42,5 @@
 
 <%= link_to 'New Tasks', new_task_path %>&nbsp;&nbsp;
 <%= link_to 'Home page', pages_home_path %> 
+
 

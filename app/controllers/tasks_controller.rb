@@ -12,6 +12,10 @@ def index
 		@task = Task.new
 	end
 
+	def edit
+      @task = Task.find(params[:id])
+    end  
+
 	def create
 		@task = Task.new(task_params)
 
@@ -22,8 +26,17 @@ def index
        end
      end
 
+    def update
+        @task = Task.find(params[:id])
+		if @task.update(task_params)
+			redirect_to :action => 'show', :id => @task
+		else
+			render :action => 'edit'
+        end
+	end 
+
  def task_params
-   params.require(:task).permit(:title, :task_type, :due_date, :assignee_id)
+   params.require(:task).permit(:title, :task_type, :due_date, :assignee_id, :bussiness_id)
  end
 end
 

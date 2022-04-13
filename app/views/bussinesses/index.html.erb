@@ -25,9 +25,12 @@
 		      <td><%= b.description %></td>
 		      <td><%= b.tasks.count %></td>
 		      <td><%= b.team_members.count %></td>
+              <td><%= link_to 'Show', b %></td>
 
-		      <td><%= link_to 'Show', b %></td>
+		      <% if current_user.user_type == "support"%>
               <td><%= link_to 'Edit', edit_bussiness_path(b) %></td>
+              <td><%= link_to 'New Bussiness', new_bussiness_path %></td>
+              <% end %>
 		    </tr>
 	  	<% end %>
 	  </tbody>
@@ -35,7 +38,7 @@
     
     <br>
 
-<%= link_to 'New Bussiness', new_bussiness_path %>&nbsp;&nbsp;
+
 <%= link_to 'New Tasks', new_task_path %>&nbsp;&nbsp;&nbsp;
 <%= link_to 'Back to Home Page', pages_home_path %>
 

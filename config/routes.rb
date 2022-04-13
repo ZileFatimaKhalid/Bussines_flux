@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'pages/home'
+  get 'pages/about'
   #post "/bussinesses", to: "bussinesses#createmember
 
   devise_for :users 
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   resources :bussinesses do
   	get 'add_user', to: 'bussinesses#add_users'
   	post 'add_user', to: 'bussinesses#createmember'
+    get 'add_new_task', to: 'bussinesses#add_new_tasks'
   end
 
   #resources :bussinesses do
